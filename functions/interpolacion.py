@@ -54,8 +54,8 @@ if __name__ == '__main__':
     c = recibir_lista(b)
     print(c)
     print(type(c))
-    #d = interpolacion(c, [1.5, 1.5])
-    #print(d)
+    d = interpolacion(c, respuesta="espectral")
+    print(d)
 
 
     
