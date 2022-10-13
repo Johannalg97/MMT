@@ -26,18 +26,22 @@ def recibir_lista(lista_de_tuplas):
     
     return w, n, k 
     
-def interpolacion(Lista, Rango):
+def interpolacion(Lista, w_i=0.0, w_f=0.0, respuesta="angular"): 
     """Esta funcion me realiza la interpolaciòn  """
+    
     if respuesta == "angular":
         w_f = w_i
         pasos = 1
+    
     elif respuesta == "espectral":
         pasos = 200
         if not (w_i < w_f):
             raise ValueError("La Longitud de onada inicial debe ser menor que longitud de onda final ")
+    
     x = np.linspace(w_i, w_f, pasos)
     y_n = np.interp(x, Lista[0], Lista[1])
     y_k = Y = np.interp(x, Lista [0], Lista [2])
+
     return x, y_n, y_k 
     
 
