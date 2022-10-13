@@ -4,6 +4,9 @@
 
 REFERENCES: "J. I. Larruquert, L. V. Rodríguez-de Marcos, J. A. Méndez, P. J. Martin, A. Bendavid. High reflectance ta-C coatings in the extreme ultraviolet, <a href=\"https://doi.org/10.1364/OE.21.027537\"><i>Opt. Exp.</i> <b>21</b>, 27537-27549 (2013)</a> (Numerical data kindly provided by Juan Larruquert)"
 COMMENTS: "ta-C: tetrahedral amorphous carbon. Density: 3.25 g/cm<sup>3</sup>. Film deposited at room temperature."
+SPECS:
+    n_absolute: true
+    wavelength_vacuum: true
 DATA:
   - type: tabulated nk
     data: |
@@ -371,6 +374,4 @@ DATA:
         9.73856367 2.463771111 0.111442103
         9.907412723 2.463522984 0.113357189
         10.07918931 2.463270371 0.115321633
-SPECS:
-    n_absolute: true
-    wavelength_vacuum: true
+

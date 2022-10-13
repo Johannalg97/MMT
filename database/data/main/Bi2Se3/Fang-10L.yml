@@ -4,6 +4,11 @@
 
 REFERENCES: "M. Fang, Z. Wang, H. Gu, M. Tong, B. Song, X. Xie, T. Zhou, X. Chen, H. Jiang, T. Jiang, S. Liu, Layer-dependent dielectric permittivity of topological insulator Bi<sub>2</sub>Se<sub>3</sub> thin films. <a href=\"https://doi.org/10.1016/j.apsusc.2019.144822\"><i>Appl. Surf. Sci.</i> <b>509</b>, 144822 (2020)</a> (Numerical data kindly provided by Baokun Song)"
 COMMENTS: "10-layer, 10L"
+SPECS:
+    n_absolute: true
+    wavelength_vacuum: true
+    film_thickness: 10L
+    substrate: sapphire
 DATA:
   - type: tabulated nk
     data: |
@@ -1091,8 +1096,4 @@ DATA:
         1.6850 5.285027 0.628999
         1.6875 5.285744 0.627658
         1.6900 5.286449 0.626261
-SPECS:
-    n_absolute: true
-    wavelength_vacuum: true
-    film_thickness: 10L
-    substrate: sapphire
+

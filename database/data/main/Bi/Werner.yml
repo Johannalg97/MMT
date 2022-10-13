@@ -4,6 +4,9 @@
 
 REFERENCES: "W. S. M. Werner, K. Glantschnig, C. Ambrosch-Draxl. Optical constants and inelastic electron-scattering data for 17 elemental metals, <a href=\"https://doi.org/10.1063/1.3243762\"><i>J. Phys Chem Ref. Data</i> <b>38</b>, 1013-1092 (2009)</a>"
 COMMENTS: "Experimental data: Derived from reflection electron energy-loss spectroscopy (REELS) spectra."
+SPECS:
+    n_absolute: true
+    wavelength_vacuum: true
 DATA:
   - type: tabulated nk
     data: |
@@ -157,6 +160,4 @@ DATA:
         1.239842 0.4756 10.1689
         1.653123 0.8132 13.6558
         2.479684 1.7826 20.4906
-SPECS:
-    n_absolute: true
-    wavelength_vacuum: true
+

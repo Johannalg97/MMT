@@ -66,7 +66,7 @@ def Propagation_matrix(Phi):
     
     return Propagation_M
 
-def Multiplication( Dynamical_M, Propagation_M):
+def Multiplication(Dynamical_M, Propagation_M):
     Multiplication_M = np.identity(2)
     for i in range(0,len(Propagation_M)):
         Minde = np.matmul(Minde , Dynamical_M[i])

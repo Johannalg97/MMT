@@ -4,6 +4,9 @@
 
 REFERENCES: "E. T. Arakawa, M. W. Williams, T. Inagaki. Optical properties of arc-evaporated carbon films between 0.6 and 3.8 eV, <a href=\"https://doi.org/10.1063/1.324057\"><i>J. Appl. Phys.,</i> <b>48</b>, 3176-3177 (1977)</a>"
 COMMENTS: "Arc-evaporated carbon film. Room temterature."
+SPECS:
+    n_absolute: true
+    wavelength_vacuum: true
 DATA:
   - type: tabulated nk
     data: |
@@ -25,6 +28,4 @@ DATA:
         1.5498 3.34 1.63
         1.7712 3.67 1.60
         2.0664 3.73 1.54
-SPECS:
-    n_absolute: true
-    wavelength_vacuum: true
+

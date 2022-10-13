@@ -4,6 +4,10 @@
 
 REFERENCES: "A. D. Rakić, A. B. Djurišic, J. M. Elazar, and M. L. Majewski. Optical properties of metallic films for vertical-cavity optoelectronic devices, <a href=\"https://doi.org/10.1364/AO.37.005271\"><i>Appl. Opt.</i> <b>37</b>, 5271-5283 (1998)</a><br>[<a href=\"https://github.com/polyanskiy/refractiveindex.info-scripts/blob/master/scripts/Rakic%201998%20-%20Be%20(LD%20model).py\">Calculation script (Python)</a>]"
 COMMENTS: "Fit of experimental data from several sources to Lorentz-Drude (LD) model"
+SPECS:
+    n_absolute: true
+    wavelength_vacuum: true
+
 DATA:
   - type: tabulated nk
     data: |
@@ -1007,6 +1011,3 @@ DATA:
         6.1311e+01 9.4671e+01 1.6257e+02
         6.1650e+01 9.5192e+01 1.6302e+02
         6.1992e+01 9.5713e+01 1.6347e+02
-SPECS:
-    n_absolute: true
-    wavelength_vacuum: true
