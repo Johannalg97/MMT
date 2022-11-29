@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from tools.helpers import *
 from functions.interpolacion import *
-from functions.MTM import *
+from functions.tmm import *
 from settings import DB_DIR
 
 
