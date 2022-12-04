@@ -48,14 +48,7 @@ def interpolation(lista, w_i=0.0, w_f=0.0, respuesta="angular"):
 
 
 
-#prueba
-if __name__ == '__main__':
-    b = [(1, 2), (2, 4), (3, 6)]
-    c = get_list(b)
-    print(c)
-    print(type(c))
-    d = interpolation(c, respuesta="angular")
-    print(d)
+
 
 
 

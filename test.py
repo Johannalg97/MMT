@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 from tools.helpers import *
 from functions.interpolacion import *
-from functions.tmm import *
+from functions.transfer_matrix_method import TransferMatrixMethod, TranferMatrixMethodHelper
 from settings import DB_DIR
 
 
 
+
+
+
 #Datos que ingresa el usuario 
-polarizacion = 'P'
-w_i = 1.6    # longitud de onda inicial
-respuesta = 'angular'
+
+w_i = 0.6    # longitud de onda inicial
+
 
 #obtener ruta de archivos 
 
@@ -42,34 +45,56 @@ list= get_list(c_5)
 it = interpolation(list, w_i=w_i)
 
 
-#pruba modulo MTM
-
 list_1= get_list(c_1)
 list_2= get_list(c_2)
 it_1 = interpolation(list_1, w_i=w_i)
 it_2 = interpolation(list_2, w_i=w_i)
-list_Ni = [it_1, it_2]
-print(it_1)
-print(it_2)
+
+
 ref_idx_1 = complex(it_1[1],it_1[2])
 ref_idx_2 = complex(it_2[1],it_2[2])
-print(ref_idx_1)
-print(ref_idx_2)
+
 list_Ni = [ref_idx_1,ref_idx_2]
-print(list_Ni)
+
+# Instancia de la clase TransferMatrixMethod
+
+test = TransferMatrixMethod()
+test.theta = 30
+test.l = w_i
+test.n = list_Ni
+matrix = test.get_transfer_matrix()
+
+# Reflectance and Transmittance
+
+reflectance = TranferMatrixMethodHelper.reflectance(matrix)
+transmittance = TranferMatrixMethodHelper.transmittance(matrix)
+print(reflectance)
+print(transmittance)
+
+theta_inicial = 30
+theta_final = 90
+pasos = 100
+
+
+a = get_list_theta(theta_inicial, theta_final, pasos)
+print(len(a))
 
 
 
 
-frenel_c = fresnel_coefficients("P" , mpmath.pi/6 , list_Ni)
-print(frenel_c)
 
-"""frenel_c = fresnel_coefficients("P" , 35 , list_Ni)
-dm = dynamical_matrix( frenel_c[0],  frenel_c[1])
-list_thickness = []
-phi = phi(frenel_c[3], list_Ni, 1.6, list_thickness)
-pm = propagation_matrix(phi)
-tm = multiplication(dm, pm)"""
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

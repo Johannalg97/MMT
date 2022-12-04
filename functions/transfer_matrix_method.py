@@ -7,13 +7,13 @@ from numpy import array, identity, matmul
 
 # Modulo para obtener la matriz de transferencia 
 
-class Transfer_Matrix_method(object): 
+class TransferMatrixMethod(object): 
     """
     This class implements the transfer matrix method
     """
     def __init__(self): 
         self.theta = 0          #angulo
-        self.l = 0              #longitud de onda
+        self.l = 0.001              #longitud de onda
         self.n = []             # indices de refracciòn
         self.thicknesses = []   # espesores
         self.polaritation = "P" #tipo de polarizaciòn 
@@ -176,82 +176,43 @@ class Transfer_Matrix_method(object):
         """
         self.get_dinamical_matriz()
         self.get_propagation_matriz()
-        a = len(self.dinamical_matrices) - 1
         m = identity(2)
 
         if not (len(self.propagation_matriz) == 0):
             for i in range(0, len(self.propagation_matriz)):
                 m = matmul(m, self.dinamical_matrices[i])
                 m = matmul(m, self.propagation_matriz[i])
-            m = matmul(m, self.dinamical_matrices[a])
+            m = matmul(m, self.dinamical_matrices[-1])
             
         for i in range(0, len(self.dinamical_matrices)):
             m = matmul(m, self.dinamical_matrices[i])
-        setattr(self, 'trasfer matrix', m)
-            
+        return m 
+        
 
-  
+class TranferMatrixMethodHelper:
 
-           
+    @staticmethod 
+    def reflectance(matrix):
+        a = matrix[1][0] / matrix[0][0] 
+        return  abs(a)**2
     
-#prueba
-if __name__ == '__main__':
-    list_ni = [1, 2+4j, 3+6j, 4]
-    list_t = [5,6]
-    
-   
-    clc = Transfer_Matrix_method()
-    clc.l = 0.0001
-    clc.n = list_ni
-    clc.theta = 45
-    clc.thicknesses = list_t
+    @staticmethod
+    def transmittance(matrix):
+        a = TransferMatrixMethod()
+        b = a.get_propagation_vectors_x()
+        c = b[-1] / b[0]
+        d = 1 / matrix[0][0]
+        return  abs(d)**2
 
-    test_1 = clc.get_propagation_vectors()
-    test_2 = clc.get_reflection_fresnel_coefficients()
-    test_3 = clc.get_trasmission_fresnel_coefficients()
-    test_4 = clc.get_phi()
-    test_5 = clc.get_dinamical_matriz()
-    test_6 = clc.get_propagation_matriz()
-    test_7 = clc.get_transfer_matrix()
-    print(vars(clc))
+
 
     
+    
 
-"""    print(test_1)
-    test_2 = clc.get_propagation_vectors_x()
-    print(test_2)
-    test_3 = clc.get_phi()
-    print(test_3)
-    test_4 = clc.get_rij()
-    print(test_4)
-    test_5 = clc.get_tij()
-    print(test_5)
-    test_6 = clc.get_dm()
-    print(test_6)
-    test_7 = clc.get_pm()
-    print(test_7) 
-    list_kx = calculation_kx(list_ni, k0_kz[0], k0_kz[1])
-    list_phi = calculation_phi(list_ni, espesores, k0_kz[0],np.pi)
-    list_rij = calculation_rij("S", list_kx, list_ni)
-    list_tij = calculation_tij("P",list_rij, list_ni)
-    list_dm = calculation_dm(list_rij,list_tij)
-    list_pm = calculation_pm(list_phi)
-    m = multiplication(list_pm, list_dm)
-    print(k0_kz)
-    print("lista de kx")
-    print(list_kx)
-    print("lista de phi")
-    print(list_phi)
-    print("lista de rij")
-    print(list_rij)
-    print("lista de tij")
-    print(list_tij)
-    print("dinamycal")
-    print(list_dm)
-    print("propagation")
-    print(list_pm)
-    print("multiplicaciòn")
-    print(m)"""
+     
+
+    
+    
 
 
 

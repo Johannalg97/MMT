@@ -25,3 +25,12 @@ def get_nk(d):
                 tupla = tuple(j.split())
                 aux.append(tupla)
     return aux
+
+def get_list_theta(initial_value, final_value, pasos): 
+    a = initial_value
+    incremento = (final_value - initial_value) / pasos
+    list_theta = []
+    while len(list_theta) < pasos:
+        a = a + incremento
+        list_theta.append(a) 
+    return list_theta
