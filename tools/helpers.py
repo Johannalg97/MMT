@@ -19,7 +19,7 @@ def get_nk(d):
     """
     aux = []
     data = d['DATA']
-    for i, v in enumerate(data):
+    for j, v in enumerate(data):
         if v.get('type').startswith('tabulate'):
             for j in v['data'].split('\n'):
                 tupla = tuple(j.split())

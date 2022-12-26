@@ -1,3 +1,4 @@
+
 import numpy as np
 
 def get_list(lista_de_tuplas):
@@ -24,9 +25,9 @@ def get_list(lista_de_tuplas):
             n.append(float(i[1]))
             k.append(float(i[2]))
     
-        return w, n, k 
+    return w, n, k 
     
-def interpolation(lista, w_i=0.0, w_f=0.0, respuesta="angular"): 
+def interpolation(lista, w_i, w_f, respuesta="angular"): 
     """Esta funcion me realiza la interpolaciòn  """
     
     if respuesta == "angular":
@@ -36,13 +37,13 @@ def interpolation(lista, w_i=0.0, w_f=0.0, respuesta="angular"):
     elif respuesta == "espectral":
         pasos = 200
         if not (w_i < w_f):
-            raise ValueError("La Longitud de onada inicial debe ser menor que longitud de onda final ")
+            raise ValueError("La Longitud de onda inicial debe ser menor que longitud de onda final ")
     
     x = np.linspace(w_i, w_f, pasos)
     y_n = np.interp(x, lista[0], lista[1])
-    y_k = Y = np.interp(x, lista [0], lista [2])
+    y_k = Y = np.interp(x, lista[0], lista[2])
 
-    return float(x), float(y_n), float(y_k)
+    return x, y_n, y_k
     
 
 

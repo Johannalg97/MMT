@@ -1,4 +1,5 @@
-from math import radians, pi, sin
+
+from math import radians, pi, sin, cos
 
 
 from mpmath import sqrt, exp #allows you to handle complex numbers
@@ -13,20 +14,18 @@ class TransferMatrixMethod(object):
     """
     def __init__(self): 
         self.theta = 0          #angulo
-        self.l = 0.001              #longitud de onda
+        self.l = 0.6            #longitud de onda
         self.n = []             # indices de refracciòn
         self.thicknesses = []   # espesores
         self.polaritation = "P" #tipo de polarizaciòn 
-        
-
-
+    
     def get_propagation_vectors(self):
         """
         This method:
         *Calculates the initial propagation vector k_0 and 
         the propagation vector in the z-component of the system for each 
         angle and one  lamda, both of which are held constant 
-        *Receives the angle (theta (float)), lamda (float), refractive index 
+        *Receives the angle (theta (float)), wave length (float), refractive index 
         of the first medium  (n0 (complex or float))
         *Returns k0 and kz (complex or floats )
         """
@@ -40,6 +39,7 @@ class TransferMatrixMethod(object):
         theta_radians = radians(self.theta)
         z = (self.n[0] * i) * sin(theta_radians)
         setattr(self, 'propagation_vector_z', z)
+        return i, z
     
     def get_propagation_vectors_x(self):
         """
@@ -55,11 +55,12 @@ class TransferMatrixMethod(object):
 
         for i in range(0, len(self.n)):
             a = (self.n[i] * self.propagation_vector_i)**2
-            b = self.propagation_vector_z**2
+            b = (self.propagation_vector_z)**2
             c = a - b
             kx = sqrt(c)
-            list.append(kx)
-        setattr(self, 'list_kx', list)
+            list.append(complex(kx))
+        setattr(self, 'propagation_vectors_x', list)
+        return list
 
     def get_phi(self):
         """
@@ -78,8 +79,9 @@ class TransferMatrixMethod(object):
                 b = self.n[0] / self.n[i+1]
                 c = sin(self.theta)
                 d = a * sqrt(1-(b*c)**2)
-                list.append (d)
+                list.append (complex(d))
         setattr(self, 'list_phi', list)
+        return list
 
     def get_reflection_fresnel_coefficients(self):
         """
@@ -97,18 +99,20 @@ class TransferMatrixMethod(object):
             raise ValueError(f"{self.polaritation} Polaritation is not valid ")
 
         if not (self.polaritation == "P"):
-            for i in range(0,len(self.list_n)-1):
-                a = self.list_kx[i] - self.list_kx[i+1]
-                b = self.list_kx[i] + self.list_kx[i+1]
+            for i in range(0, len(self.n)-1):
+                a = self.propagation_vectors_x[i] - self.propagation_vectors_x[i+1]
+                b = self.propagation_vectors_x[i] + self.propagation_vectors_x[i+1]
                 r = a / b
                 list.append(r)
         
-        for i in range(0,len(self.n)-1):
-            a = self.n[i]**2 * self.list_kx[i+1] 
-            b = self.n[i+1]**2 * self.list_kx[i]
-            r = a -b / a + b 
+        for i in range(0, len(self.n)-1):
+            a = (self.n[i]**2) * self.propagation_vectors_x[i+1] 
+            b = (self.n[i+1]**2) * self.propagation_vectors_x[i]
+            r = (a - b) / (a + b)
             list.append(r) 
         setattr(self, 'reflection_coefficients', list)
+        return list
+        
         
     def get_trasmission_fresnel_coefficients(self):
         """
@@ -128,10 +132,11 @@ class TransferMatrixMethod(object):
         
         for i in range(0, len(self.reflection_coefficients)):
             a = self.n[i] / self.n[i+1]
-            b = 1 * self.reflection_coefficients[i]
-            tij = a *  b
+            b = 1 + self.reflection_coefficients[i]
+            tij = a * b
             list.append(tij)
         setattr(self, 'trasmission_coefficients', list)
+        return list
 
     def get_dinamical_matriz(self):
         """
@@ -145,9 +150,10 @@ class TransferMatrixMethod(object):
         self.get_trasmission_fresnel_coefficients()
         
         for i,j in zip(self.reflection_coefficients , self.trasmission_coefficients):
-            a = array([[1/j,i/j],[i/j,1/j]])
+            a = array([[1/j,i/j], [i/j,1/j]])
             list.append(a)
         setattr(self, 'dinamical_matrices', list)
+        return list
 
     def get_propagation_matriz(self):
         """
@@ -162,9 +168,10 @@ class TransferMatrixMethod(object):
 
         if len(self.thicknesses) > 0:
             for i in self.list_phi:
-                a = array([[exp(-1j*i),0],[0, exp(1j*i)]])
+                a = array([[exp(-1j * i), 0], [0, exp(1j * i)]])
                 list.append(a)
         setattr(self, 'propagation_matriz', list)
+        return list
         
     def get_transfer_matrix(self):
         """
@@ -186,23 +193,86 @@ class TransferMatrixMethod(object):
             
         for i in range(0, len(self.dinamical_matrices)):
             m = matmul(m, self.dinamical_matrices[i])
+        setattr(self, 'transfer_matriz', m)
         return m 
+
+    def get_reflectance(self):
+        """
+        This method: 
+        *calculates the reflectance of the multilayer system.
+        *Recive one matriz (transfer matriz)
+        *Returns a element real and posotive 
+        """
+        self.get_transfer_matrix()
+
+        r = (self.transfer_matriz[1][0]) / (self.transfer_matriz[0][0])
+        reflectance = (abs(r))**2
+        setattr(self, 'reflectance', reflectance)
+        return  reflectance
+
+    def get_transmittance(self):
+        """
+        This method:
+        *calculates the trasmitance of the multilayer system.
+        *Recive one matriz (transfer matriz) and the list  n of the refractive index (complex or floats)
+        and the list of cosine of the angles at which the wave reaches each layer (complex or floats)
+        *Returns a element complex or float
+        """ 
+        self.get_transfer_matrix()
+
+        a = self.n[0] / self.n[-1] 
+        b = sin(self.theta)**2
+        cos_t = sqrt(1 - (a * b))
+
+        d = self.n[-1] / self.n[0] 
+        e = cos_t / cos(self.theta)
+
+        f = 1 / self.transfer_matriz[0][0] 
+        g = abs(f)**2    
+        trasmittance = d * e * g 
+        setattr(self, 'trasmittance', trasmittance)
+        return trasmittance
+    
+    def get_absortance(self):
+        """
+        This method:
+        *calculates the absortance of the multilayer system.
+        *Recive  reflectance (float) and transmittance (float or complex )
+        *Returns a element complex or float  """ 
+        self.get_reflectance()
+        self.get_transmittance()
+
+        absortance = 1 - self.reflectance - self.trasmittance
+        return absortance
+
+        
+      
+
+
+
+            
+     
+            
         
 
-class TranferMatrixMethodHelper:
 
-    @staticmethod 
-    def reflectance(matrix):
-        a = matrix[1][0] / matrix[0][0] 
-        return  abs(a)**2
-    
-    @staticmethod
-    def transmittance(matrix):
-        a = TransferMatrixMethod()
-        b = a.get_propagation_vectors_x()
-        c = b[-1] / b[0]
-        d = 1 / matrix[0][0]
-        return  abs(d)**2
+
+
+
+
+        
+       
+
+
+
+
+
+        
+
+
+
+
+
 
 
 
