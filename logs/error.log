@@ -104,3 +104,51 @@
 [Fri Dec 23 13:48:29.289159 2022] [core:error] [pid 6000] (13)Permission denied: [client 127.0.0.1:40866] AH00035: access to / denied (filesystem path '/home/daniel/MMT') because search permissions are missing on a component of the path
 [Fri Dec 23 13:48:45.140397 2022] [core:error] [pid 6001] (13)Permission denied: [client 127.0.0.1:44898] AH00035: access to / denied (filesystem path '/home/daniel/MMT') because search permissions are missing on a component of the path
 [Fri Dec 23 13:48:45.211851 2022] [core:error] [pid 6002] (13)Permission denied: [client 127.0.0.1:44908] AH00035: access to / denied (filesystem path '/home/daniel/MMT') because search permissions are missing on a component of the path
+[Mon Dec 26 09:39:55.296784 2022] [cgi:error] [pid 10880] [client 127.0.0.1:45340] AH01215:   File "/home/daniel/my_projects/mmt/rootsystem/application/xfc.py", line 21: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 09:39:55.296859 2022] [cgi:error] [pid 10880] [client 127.0.0.1:45340] AH01215:     print error_header if SHOW_ERROR_404 else HTTP_REDIRECT: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 09:39:55.296863 2022] [cgi:error] [pid 10880] [client 127.0.0.1:45340] AH01215:           ^: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 09:39:55.296884 2022] [cgi:error] [pid 10880] [client 127.0.0.1:45340] AH01215: SyntaxError: Missing parentheses in call to 'print'. Did you mean print(error_header if SHOW_ERROR_404 else HTTP_REDIRECT)?: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 09:39:55.297997 2022] [cgi:error] [pid 10880] [client 127.0.0.1:45340] End of script output before headers: xfc.py
+[Mon Dec 26 09:41:35.556000 2022] [cgi:error] [pid 10881] [client 127.0.0.1:43830] End of script output before headers: xfc.py
+[Mon Dec 26 09:41:45.540696 2022] [cgi:error] [pid 10882] [client 127.0.0.1:41846] End of script output before headers: xfc.py
+[Mon Dec 26 09:42:46.754654 2022] [cgi:error] [pid 10883] [client 127.0.0.1:58810] Premature end of script headers: xfc.py
+[Mon Dec 26 09:44:56.273270 2022] [cgi:error] [pid 10884] [client 127.0.0.1:39360] Premature end of script headers: xfc.py
+[Mon Dec 26 09:46:56.916620 2022] [cgi:error] [pid 10988] [client 127.0.0.1:50192] Premature end of script headers: xfc.py
+[Mon Dec 26 09:47:45.105685 2022] [cgi:error] [pid 10990] [client 127.0.0.1:45748] Premature end of script headers: xfc.py
+[Mon Dec 26 09:48:54.481879 2022] [cgi:error] [pid 10991] [client 127.0.0.1:50466] Premature end of script headers: xfc.py
+[Mon Dec 26 09:54:15.890042 2022] [cgi:error] [pid 10992] [client 127.0.0.1:50930] Premature end of script headers: xfc.py
+[Mon Dec 26 09:54:38.172793 2022] [cgi:error] [pid 10988] [client 127.0.0.1:38718] Premature end of script headers: xfc.py
+[Mon Dec 26 09:54:55.598863 2022] [cgi:error] [pid 10989] [client 127.0.0.1:38064] Premature end of script headers: xfc.py
+[Mon Dec 26 09:56:24.424509 2022] [cgi:error] [pid 10990] [client 127.0.0.1:51880] Premature end of script headers: xfc.py
+[Mon Dec 26 10:06:05.207812 2022] [cgi:error] [pid 11319] [client 127.0.0.1:42926] AH01215: Traceback (most recent call last):: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:06:05.207879 2022] [cgi:error] [pid 11319] [client 127.0.0.1:42926] AH01215:   File "/home/daniel/my_projects/mmt/rootsystem/application/xfc.py", line 11, in <module>: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:06:05.207891 2022] [cgi:error] [pid 11319] [client 127.0.0.1:42926] AH01215:     modulo = __import__(PACKAGE, fromlist=[CONTROLLER]): /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:06:05.207908 2022] [cgi:error] [pid 11319] [client 127.0.0.1:42926] AH01215:   File "/home/daniel/my_projects/mmt/rootsystem/application/modules/dashboard.py", line 2, in <module>: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:06:05.207921 2022] [cgi:error] [pid 11319] [client 127.0.0.1:42926] AH01215:     from string import template: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:06:05.207937 2022] [cgi:error] [pid 11319] [client 127.0.0.1:42926] AH01215: ImportError: cannot import name 'template' from 'string' (/usr/local/lib/python3.9/string.py): /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:06:05.211327 2022] [cgi:error] [pid 11319] [client 127.0.0.1:42926] End of script output before headers: xfc.py
+[Mon Dec 26 10:12:23.520023 2022] [cgi:error] [pid 11318] [client 127.0.0.1:46218] AH01215: Traceback (most recent call last):: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:23.520060 2022] [cgi:error] [pid 11318] [client 127.0.0.1:46218] AH01215:   File "/home/daniel/my_projects/mmt/rootsystem/application/xfc.py", line 11, in <module>: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:23.520072 2022] [cgi:error] [pid 11318] [client 127.0.0.1:46218] AH01215:     modulo = __import__(PACKAGE, fromlist=[CONTROLLER]): /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:23.520088 2022] [cgi:error] [pid 11318] [client 127.0.0.1:46218] AH01215:   File "/home/daniel/my_projects/mmt/rootsystem/application/modules/dashboard.py", line 6, in <module>: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:23.520097 2022] [cgi:error] [pid 11318] [client 127.0.0.1:46218] AH01215:     from core.tools.helpers import show_html: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:23.520132 2022] [cgi:error] [pid 11318] [client 127.0.0.1:46218] AH01215:   File "/home/daniel/my_projects/mmt/rootsystem/application/core/tools/helpers.py", line 1, in <module>: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:23.520137 2022] [cgi:error] [pid 11318] [client 127.0.0.1:46218] AH01215:     import yaml: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:23.520145 2022] [cgi:error] [pid 11318] [client 127.0.0.1:46218] AH01215: ModuleNotFoundError: No module named 'yaml': /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:23.523675 2022] [cgi:error] [pid 11318] [client 127.0.0.1:46218] End of script output before headers: xfc.py
+[Mon Dec 26 10:12:56.892149 2022] [cgi:error] [pid 11319] [client 127.0.0.1:53418] AH01215: Traceback (most recent call last):: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:56.892190 2022] [cgi:error] [pid 11319] [client 127.0.0.1:53418] AH01215:   File "/home/daniel/my_projects/mmt/rootsystem/application/xfc.py", line 11, in <module>: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:56.892201 2022] [cgi:error] [pid 11319] [client 127.0.0.1:53418] AH01215:     modulo = __import__(PACKAGE, fromlist=[CONTROLLER]): /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:56.892219 2022] [cgi:error] [pid 11319] [client 127.0.0.1:53418] AH01215:   File "/home/daniel/my_projects/mmt/rootsystem/application/modules/dashboard.py", line 6, in <module>: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:56.892228 2022] [cgi:error] [pid 11319] [client 127.0.0.1:53418] AH01215:     from core.tools.helpers import show_html: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:56.892245 2022] [cgi:error] [pid 11319] [client 127.0.0.1:53418] AH01215:   File "/home/daniel/my_projects/mmt/rootsystem/application/core/tools/helpers.py", line 1, in <module>: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:56.892250 2022] [cgi:error] [pid 11319] [client 127.0.0.1:53418] AH01215:     import yaml: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:56.892259 2022] [cgi:error] [pid 11319] [client 127.0.0.1:53418] AH01215: ModuleNotFoundError: No module named 'yaml': /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:12:56.895696 2022] [cgi:error] [pid 11319] [client 127.0.0.1:53418] End of script output before headers: xfc.py
+[Mon Dec 26 10:19:45.042601 2022] [cgi:error] [pid 11321] [client 127.0.0.1:38266] AH01215: Traceback (most recent call last):: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:19:45.042641 2022] [cgi:error] [pid 11321] [client 127.0.0.1:38266] AH01215:   File "/home/daniel/my_projects/mmt/rootsystem/application/xfc.py", line 23, in <module>: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:19:45.042653 2022] [cgi:error] [pid 11321] [client 127.0.0.1:38266] AH01215:     redirect(f"http//:webmmt.local{DEFAULT_RESOURCE}"): /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:19:45.042662 2022] [cgi:error] [pid 11321] [client 127.0.0.1:38266] AH01215: NameError: name 'DEFAULT_RESOURCE' is not defined: /home/daniel/my_projects/mmt/rootsystem/application/xfc.py
+[Mon Dec 26 10:19:45.052023 2022] [cgi:error] [pid 11321] [client 127.0.0.1:38266] End of script output before headers: xfc.py
+[Mon Dec 26 10:21:27.416295 2022] [cgi:error] [pid 11318] [client 127.0.0.1:47408] End of script output before headers: xfc.py
+[Mon Dec 26 10:21:32.882978 2022] [cgi:error] [pid 11319] [client 127.0.0.1:48312] End of script output before headers: xfc.py

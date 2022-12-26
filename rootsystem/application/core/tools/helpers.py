@@ -34,3 +34,13 @@ def get_list_theta(initial_value, final_value, pasos):
         a = a + incremento
         list_theta.append(a) 
     return list_theta
+    
+def show_html(content=''):
+    print("Content-type: text/html; charset=utf-8")
+    print("")
+    print(content)
+    
+def redirect(url):
+    print("Content-type: text/html; charset=utf-8")
+    print("Location: {}".format(url))
+    print("")
