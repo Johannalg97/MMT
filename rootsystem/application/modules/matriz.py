@@ -1,22 +1,34 @@
 from cgi import FieldStorage
+from string import Template
 
 from config import STATIC_DIR
 from core.tools.helpers import *
-from core.functions.interpolacion import *
+# from core.functions.interpolacion import *
 from settings import DB_DIR
 
 class Matriz(object):
     """ Modelo """
-    pass
+    def __init__(self):
+        self.theta = 0
+        self.wi = 0.0
+        self.materiales_collection = []
     
 
 class MatrizView(object):
     """ Vista """
+    
+    @staticmethod
+    def get_html(name):
+        with open("{}/{}.html".format(STATIC_DIR, name),"r") as f:
+            template = f.read()
+        return template
+        
     def calcular(self):
-       with open("{}/calcular.html".format(STATIC_DIR),"r") as f:
-            html = f.read()
-       
-       show_html(html)
+        base = MatrizView.get_html("base")
+        inner = MatrizView.get_html("calcular")
+        html = Template(base).safe_substitute(contenido=inner)
+        
+        show_html(html)
     
 
 class MatrizController(object):
@@ -30,14 +42,20 @@ class MatrizController(object):
     
     def procesar(self):
         form = FieldStorage()
-        theta = form['angulo'].value
-        w_i = form['w_i'].value
-        db = form['db'].value
-        # get material 
-        path_to_db = "{}/{}.yml".format(DB_DIR, db)
-        d_1 = get_schema_from_yaml(ruta=path_to_db)
-        c_1 = get_nk(d_1)
-        # Interpolacion
         
+        self.model.theta = form['angulo'].value
+        self.model.wi = form['w_i'].value
+        # add materiales
+        try: 
+            for i in form['db']:
+                # get material 
+                path_to_db = "{}/{}.yml".format(DB_DIR, i.value)
+                data = get_schema_from_yaml(ruta=path_to_db)
+                self.model.materiales_collection.append(get_nk(data))
+        except TypeError:
+            path_to_db = "{}/{}.yml".format(DB_DIR, form['db'].value)
+            data = get_schema_from_yaml(ruta=path_to_db)
+            self.model.materiales_collection.append(get_nk(data))
+
         
-        show_html("data ")
+        show_html(f"Objeto {vars(self.model)}")

@@ -1,31 +1,32 @@
-<!doctype html>
-<html>
-<head>
-    <title>App MMT</title>
-    <meta charset="utf-8">
-</head>
-    <body>
-        <h1>Ingresa datos: </h1>
+<!DOCTYPE html>
+<div class="callout">
+        <h3>Ingresa datos: </h3>
         <br>
-        <form method="POST" action="/matriz/procesar">
-            <label>Angulo: </label>
-            <input type="text" id="angulo" name="angulo"><br><br>
-            <label>Longitud Onda : </label>
-            <input type="text" id="w_i" name="w_i"><br><br>
-            <label>Base datos: </label>
-            <select name="db" id="db">
-                <optgroup label="glass">
-                    <option value="glass/ami/AMTIR-1">AMTIR-1</option>
-                    <option value="glass/ami/AMTIR-6">AMTIR-6</option>
-                </optgroup>
-                <optgroup label="main">
-                    <option value="main/Ag/Babar">Ag-Babar</option>
-                    <option value="main/Ag/Choi">Ag-Choi</option>
-                </optgroup>
-            </select>
-            <br><br>
-            <input type="submit" value="Submit">
-        
+    <form method="POST" action="/matriz/procesar">
+     <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Angulo :
+          <input type="text" placeholder="0 - 90" id="angulo" name="angulo">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Longitud Onda:
+          <input type="text" placeholder="0.0" id="w_i" name="w_i">
+        </label>
+      </div>
+     <div class="medium-6 cell">
+     <label>Materiales: </label>
+<!--     ajax-->
+        <label>
+            Cuantos Materiales ?
+            <input type="number" value="1" onclick="cargar('/materiales/listar/', value)">
+        </label>
+        <div id="respuesta"></div>
+     </div>
+     </div>
+
+         <button type="submit" class="button">Procesar</button>
         </form>
-    </body>
-</html>
+        
+</div>
+<script src="/static/ajax.js" ></script>

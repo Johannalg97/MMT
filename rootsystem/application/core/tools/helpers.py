@@ -44,3 +44,9 @@ def redirect(url):
     print("Content-type: text/html; charset=utf-8")
     print("Location: {}".format(url))
     print("")
+
+def show_ajax(content=''):
+    print("Content-type: text/html; Charset=utf8")
+    print("Access-Control-Allow-Origin: http://webmmt.local")
+    print("")
+    print(content)

@@ -8,3 +8,8 @@ class DashboardController(object):
         with open("{}/home.html".format(STATIC_DIR),"r") as f:
             html = f.read()
         show_html(html)
+        
+    def fundation_docs(self):
+        with open("{}/index.html".format(STATIC_DIR),"r") as f:
+            html = f.read()
+        show_html(html)
