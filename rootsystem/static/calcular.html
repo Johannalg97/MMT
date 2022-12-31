@@ -2,29 +2,37 @@
 <div class="callout">
         <h3>Ingresa datos: </h3>
         <br>
-    <form method="POST" action="/matriz/procesar">
+    <form method="POST" action="/matriz/angular">
      <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">
+      <div class="medium-3 cell">
         <label>Angulo :
           <input type="text" placeholder="0 - 90" id="angulo" name="angulo">
         </label>
       </div>
-      <div class="medium-6 cell">
+      <div class="medium-3 cell">
         <label>Longitud Onda:
           <input type="text" placeholder="0.0" id="w_i" name="w_i">
         </label>
       </div>
-     <div class="medium-6 cell">
+      <fieldset class="large-5 cell">
+    <legend>Polarizacion</legend>
+    <input type="radio" name="pokemon" value="P" id="pokemonRed" required><label for="pokemonRed">P</label>
+    <input type="radio" name="pokemon" value="S" id="pokemonBlue"><label for="pokemonBlue">S</label>
+  </fieldset>
+      </div>
+      <div class="grid-x grid-padding-x">
+     <div class="medium-2 cell">
      <label>Materiales: </label>
-<!--     ajax-->
+
         <label>
             Cuantos Materiales ?
-            <input type="number" value="1" onclick="cargar('/materiales/listar/', value)">
+            <input type="number" value="0" onclick="cargar('/materiales/listar/', value)">
         </label>
+        <!--ajax-->
         <div id="respuesta"></div>
      </div>
-     </div>
-
+     
+      </div>
          <button type="submit" class="button">Procesar</button>
         </form>
         

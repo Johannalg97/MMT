@@ -40,7 +40,7 @@ class MatrizController(object):
     def calcular(self):
         self.view.calcular()
     
-    def procesar(self):
+    def angular(self):
         form = FieldStorage()
         
         self.model.theta = form['angulo'].value

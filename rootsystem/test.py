@@ -51,8 +51,8 @@ it_1 = interpolation(list_1, w_i=w_i)
 it_2 = interpolation(list_2, w_i=w_i)
 
 
-ref_idx_1 = complex(it_1[1],it_1[2])
-ref_idx_2 = complex(it_2[1],it_2[2])
+ref_idx_1 = complex(it_1[1],it_1[2])  # sustrato
+ref_idx_2 = complex(it_2[1],it_2[2])  # host 
 
 list_Ni = [ref_idx_1,ref_idx_2]
 
