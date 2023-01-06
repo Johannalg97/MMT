@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<div class="callout">
+        <h3>Parametros Iniciales: </h3>
+        <br>
+    <form method="POST" action="/matriz/angular" for="angular">
+     <div class="grid-x grid-padding-x">
+      <div class="medium-2 cell">
+        <label>Angulo Inicial :
+          <input type="text" placeholder="0 - 90" id="angulo_i" name="angulo_i" for="angular" required>
+        </label>
+      </div>
+      <div class="medium-2 cell">
+        <label>Angulo Final:
+          <input type="text" placeholder="0.0" id="angulo_f" name="angulo_f" required>
+        </label>
+      </div>
+      <div class="medium-2 cell">
+        <label>Pasos:
+          <input type="text" placeholder="100" id="pasos" name="pasos" required>
+        </label>
+      </div>
+       <div class="medium-2 cell">
+        <label>Longitud de Onda:
+          <input type="text" placeholder="100" id="w_i" name="w_i" required>
+        </label>
+      </div>
+      <div class="medium-3 cell">
+        <legend>Polarizacion</legend>
+        <input type="radio" name="pol" value="P" id="pol" required><label>P</label>
+        <input type="radio" name="pol" value="S" id="pol"><label>S</label>
+      </div>
+      
+ <div class="medium-12 cell">
+ <label>Sustrato</label>
+     <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
+  <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true">Bases de Datos</a></li>
+  <li class="tabs-title"><a href="#panel2c">Formlulas dispersion</a></li>
+  <li class="tabs-title"><a href="#panel3c">Teorias de medio efectivo</a></li>
+  <li class="tabs-title"><a href="#panel4c">Manual</a></li>
+</ul>
+
+<div class="tabs-content" data-tabs-content="collapsing-tabs">
+  <div class="tabs-panel is-active" id="panel1c">
+    <div class="grid-x grid-padding-x">
+    <div class="medium-2 cell">
+<label>Capa 1
+<select name="db" id="db">
+            <optgroup label="glass">
+                <option value="glass/ami/AMTIR-1">AMTIR-1</option>
+                <option value="glass/ami/AMTIR-6">AMTIR-6</option>
+                <option value="glass/barberini/D0082">D0082</option>
+            </optgroup>
+            <optgroup label="main">
+                <option value="main/Ag/Babar">Ag-Babar</option>
+                <option value="main/Ag/Choi">Ag-Choi</option>
+            </optgroup>
+</select>
+</label>
+</div>
+
+<div class="medium-2 cell">
+
+
+
+    </div>
+
+        <div class="medium-2 cell">
+        <label>
+            Adicionar capas
+            
+            <input type="number" value="0" onclick="cargar('/materiales/listar/', value)">
+            
+        </label>
+        </div>
+        <div class="grid-x grid-padding-x" id="respuesta"></div>
+  </div>
+  <div class="tabs-panel" id="panel2c">
+    <p>Vivamus hendrerit arcu sed erat molestie vehicula. .</p>
+  </div>
+  <div class="tabs-panel" id="panel3c">
+    <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
+  </div>
+  <div class="tabs-panel" id="panel4c">
+    <label>N:<input type="text" placeholder="100" id="w_i" name="w_i" required></label>
+    <label>K:<input type="text" placeholder="100" id="w_i" name="w_i" required></label>
+  </div>
+</div>
+
+</div>
+
+    
+</div>
+<input type="submit" value="Calcular">
+</form>
+        
+</div>
+<script src="/static/ajax.js" ></script>

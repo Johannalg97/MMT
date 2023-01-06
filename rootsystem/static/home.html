@@ -1,47 +1,50 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMT web app Site</title>
-    <link rel="stylesheet" href="/static/css/foundation.css">
-    <link rel="stylesheet" href="/static/css/app.css">
-</head>
-<body>
-  <div class="grid-container">        
-        <div class="top-bar">
-        <div class="top-bar-left">
-            <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text">MMT site web</li>
-        <li>
-        <a href="#">One</a>
-        <ul class="menu vertical">
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Two</a></li>
-      <li><a href="#">Three</a></li>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      <li><input type="search" placeholder="Search"></li>
-      <li><button type="button" class="button">Search</button></li>
-    </ul>
-  </div>
-</div>
-        <br>
-        <a href="/matriz/calcular" class="small button">Go to calcular angular</a>
-    
-<script src="/static/js/vendor/jquery.js"></script>
-<script src="/static/js/vendor/what-input.js"></script>
-<script src="/static/js/vendor/foundation.js"></script>
-<script src="/static/js/app.js"></script>
+<div class="grid-x grid-margin-x">
+     <div class="cell small-3">
+        
+     </div>
+     <div class="cell small-6">
+        <h2>Tranfer Matrix Method</h2>
+     </div>
+     <div class="cell small-3">
+        <div class="media-object-section align-self-bottom">
+            <div class="thumbnail">
+            <img src= "/static/img/image.png">
+        </div>
+        </div>
 
+    </div>
+     
+</div>
+<br>
+<div class="callout">
+    <div class="grid-x grid-padding-x">
+        <div class="medium-9 cell">
+           <h5>Lorem ipsum dolor sit amet.</h5><br>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+           Tempor nec feugiat nisl pretium fusce id. Ut tortor pretium viverra suspendisse potenti. 
+           Interdum velit euismod in pellentesque massa placerat duis ultricies. Nisi lacus sed viverra tellus in hac habitasse platea dictumst. 
+           Tincidunt augue interdum velit euismod in pellentesque massa placerat duis. </p> 
+        </div>
+        <div class="medium-3 cell">
+            <img src="/static/img/image.png">
+        </div>     
+    <div>        
+</div>
+</div>
 </div>
 
-</body>
-</html>
+<div class="grid-x grid-padding-x">
+    <div class="cell small-4"></div>
+    <div class="cell small-4">
+    <form method="POST" action="/matriz/respuesta">
+        <label>Respuesta
+            <select id="respuesta" name="respuesta">
+                <option id="respuesta" name="respuesta" value="calcular">Angular</option>
+                <option value="spectral" disable>Spectral</option>
+            </select>
+        </label>
+        <button type="submit" class="button">submit</button>
+    </form>
+    </div>
+    <div class="cell small-4"></div>
+</div>

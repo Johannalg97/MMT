@@ -1,3 +1,5 @@
+from string import Template
+
 from config import STATIC_DIR
 from core.tools.helpers import *
 # from core.functions.interpolacion import *
@@ -17,11 +19,12 @@ class MaterialesView(object):
         return template
         
     def listar(self, cant):
-        html = MaterialesView.get_html("materiales")
+        template = MaterialesView.get_html("materiales")
         string = []
         
         limite = cant + 1
         for i in range(1, limite):
+            html = Template(template).safe_substitute({'cant': i})
             string.append(html)
             
         render = str("\n".join(string))

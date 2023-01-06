@@ -1,40 +1,151 @@
-<!DOCTYPE html>
-<div class="callout">
-        <h3>Ingresa datos: </h3>
-        <br>
-    <form method="POST" action="/matriz/angular">
-     <div class="grid-x grid-padding-x">
-      <div class="medium-3 cell">
-        <label>Angulo :
-          <input type="text" placeholder="0 - 90" id="angulo" name="angulo">
+<form method="POST" action="/matriz/angular">
+<!--    parameteros iniciales -->
+    <div class="callout">
+        <h3>Parametros Iniciales Matriz</h3>
+        <div class="grid-x grid-padding-x">
+            <div class="medium-2 cell">
+        <label>Angulo Inicial :
+          <input type="text" placeholder="0 - 90" id="angulo_i" name="angulo_i" for="angular" required>
+        </label>
+      </div>
+      <div class="medium-2 cell">
+        <label>Angulo Final:
+          <input type="text" placeholder="0.0" id="angulo_f" name="angulo_f" required>
+        </label>
+      </div>
+      <div class="medium-2 cell">
+        <label>Pasos:
+          <input type="text" placeholder="100" id="pasos" name="pasos" required>
+        </label>
+      </div>
+       <div class="medium-2 cell">
+        <label>Longitud de Onda:
+          <input type="text" placeholder="100" id="w_i" name="w_i" required>
         </label>
       </div>
       <div class="medium-3 cell">
-        <label>Longitud Onda:
-          <input type="text" placeholder="0.0" id="w_i" name="w_i">
-        </label>
+        <legend>Polarizacion</legend>
+        <input type="radio" name="pol" value="P" id="pol" required><label>P</label>
+        <input type="radio" name="pol" value="S" id="pol"><label>S</label>
       </div>
-      <fieldset class="large-5 cell">
-    <legend>Polarizacion</legend>
-    <input type="radio" name="pokemon" value="P" id="pokemonRed" required><label for="pokemonRed">P</label>
-    <input type="radio" name="pokemon" value="S" id="pokemonBlue"><label for="pokemonBlue">S</label>
-  </fieldset>
-      </div>
-      <div class="grid-x grid-padding-x">
-     <div class="medium-2 cell">
-     <label>Materiales: </label>
+        </div>
+    </div>
+<!--    sustrato data-->
+    <div class="callout">
+    <h3>Sustrato</h3>
+        <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
+          <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true">Refractiveindex.info</a></li>
+          <li class="tabs-title"><a href="#panel2c">Formlulas dispersion</a></li>
+          <li class="tabs-title"><a href="#panel3c">Teorias de medio efectivo</a></li>
+          <li class="tabs-title"><a href="#panel4c">Manual</a></li>
+        </ul>
 
-        <label>
-            Cuantos Materiales ?
-            <input type="number" value="0" onclick="cargar('/materiales/listar/', value)">
-        </label>
-        <!--ajax-->
-        <div id="respuesta"></div>
-     </div>
-     
-      </div>
-         <button type="submit" class="button">Procesar</button>
-        </form>
+        <div class="tabs-content" data-tabs-content="collapsing-tabs">
+          <div class="tabs-panel is-active" id="panel1c">
         
-</div>
+           
+            <div class="grid-x grid-padding-x">
+               <iframe src="https://refractiveindex.info" style="border:none;" height="200" width="900" title="Iframe refracctive index "></iframe>
+            <div class="medium-2 cell">
+               <label>n:<input type="text" placeholder="1" id="n" name="n" required></label>
+               <label>k:<input type="text" placeholder="0" id="k" name="k" required></label>
+            </div>
+           </div>
+         </div>
+        </div>
+        
+        
+          <div class="tabs-panel" id="panel2c">
+            <p>Vivamus hendrerit arcu sed erat molestie vehicula.  Suspendisse dictum feugiat nisl ut dapibus.</p>
+          </div>
+          <div class="tabs-panel" id="panel3c">
+            <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
+          </div>
+          <div class="tabs-panel" id="panel4c">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+   
+<!--    Host-->
+    <div class="callout">
+        <h3>Host</h3>
+         <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
+          <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true">Refractiveindex.info</a></li>
+          <li class="tabs-title"><a href="#panel2c">Formlulas dispersion</a></li>
+          <li class="tabs-title"><a href="#panel3c">Teorias de medio efectivo</a></li>
+          <li class="tabs-title"><a href="#panel4c">Manual</a></li>
+        </ul>
+
+        <div class="tabs-content" data-tabs-content="collapsing-tabs">
+          <div class="tabs-panel is-active" id="panel1c">
+        
+           
+            <div class="grid-x grid-padding-x">
+               <iframe src="https://refractiveindex.info" style="border:none;" height="200" width="900" title="Iframe refracctive index "></iframe>
+            <div class="medium-2 cell">
+               <label>n:<input type="text" placeholder="1" id="n_host" name="n_host" required></label>
+               <label>k:<input type="text" placeholder="0" id="k_host" name="k_host" required></label>
+            </div>
+           </div>
+         </div>
+        </div>
+        
+        
+          <div class="tabs-panel" id="panel2c">
+            <p>Vivamus hendrerit arcu sed erat molestie vehicula.  Suspendisse dictum feugiat nisl ut dapibus.</p>
+          </div>
+          <div class="tabs-panel" id="panel3c">
+            <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
+          </div>
+          <div class="tabs-panel" id="panel4c">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+    </div>
+<!--    capas adicioanles-->
+    <div  class="callout">
+        <h3>Capas</h3>
+         <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
+          <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true">Refractiveindex.info</a></li>
+          <li class="tabs-title"><a href="#panel2c">Formlulas dispersion</a></li>
+          <li class="tabs-title"><a href="#panel3c">Teorias de medio efectivo</a></li>
+          <li class="tabs-title"><a href="#panel4c">Manual</a></li>
+        </ul>
+
+        <div class="tabs-content" data-tabs-content="collapsing-tabs">
+          <div class="tabs-panel is-active" id="panel1c">
+        
+           
+            <div class="grid-x grid-padding-x">
+               <iframe src="https://refractiveindex.info" style="border:none;" height="200" width="900" title="Iframe refracctive index "></iframe>
+               <br>
+            <div class="medium-2 cell">
+                <label>
+            Adicionar capas
+            
+            <input type="number" value="0" onclick="cargar('/materiales/listar/', value)">
+            
+        </label>
+        </div>
+        <div class="grid-x grid-padding-x" id="respuesta"></div>
+               
+            </div>
+           </div>
+         </div>
+        </div>
+        
+        
+          <div class="tabs-panel" id="panel2c">
+            <p>Vivamus hendrerit arcu sed erat molestie vehicula.  Suspendisse dictum feugiat nisl ut dapibus.</p>
+          </div>
+          <div class="tabs-panel" id="panel3c">
+            <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
+          </div>
+          <div class="tabs-panel" id="panel4c">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+    <input type="submit" value="Calcular">
+    </div>
+    
+   </div>
+</form>
 <script src="/static/ajax.js" ></script>
